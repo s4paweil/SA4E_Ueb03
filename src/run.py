@@ -4,7 +4,7 @@ import os
 import sys
 import time
 import logging
-from kafka import KafkaConsumer
+from kafka import KafkaConsumer, KafkaProducer
 from kafka.admin import KafkaAdminClient
 from kafka.errors import KafkaError
 import threading
@@ -14,7 +14,11 @@ import argparse
 MAP_FILE = "map.json"
 KAFKA_BOOTSTRAP_SERVERS = ['localhost:29092', 'localhost:39092', 'localhost:49092']
 STATUS_TOPIC = "segment-status"
+MOVEMENT_TOPIC = "token-movement"
 COMPOSE_FILE = "docker-compose.yaml"
+NUM_PLAYERS = 1
+ROUNDS = 2
+
 
 should_exit = False
 
@@ -48,6 +52,7 @@ def load_segment_count():
     with open(MAP_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
     return data.get("totalSegments", 0)
+
 
 def run_setup(mode: str, num_tracks=None, track_length=None):
     if mode == "--generate":
@@ -127,6 +132,42 @@ def handle_exit(sig, frame):
     stop_docker_compose()
     sys.exit(0)
 
+
+def listen_for_token_movements(done_event):
+    logging.info("Listening for token movement messages...")
+
+    consumer = KafkaConsumer(
+        MOVEMENT_TOPIC,
+        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+        group_id="runpy-movement-logger",
+        value_deserializer=lambda m: json.loads(m.decode("utf-8")),
+        key_deserializer=lambda k: k.decode("utf-8") if k else None,
+        auto_offset_reset="earliest",
+        enable_auto_commit=True
+    )
+
+    finished_players = set()
+
+    for msg in consumer:
+        data = msg.value
+        player_id = data.get("playerId")
+        path = data.get("path", [])
+        rounds_left = data.get("roundsLeft", None)
+
+        logging.info(f"Player {player_id} moved: " + " → ".join(path))
+
+        if rounds_left == 0 and player_id not in finished_players:
+            finished_players.add(player_id)
+            logging.info(f"Player {player_id} has completed the race!")
+
+            if len(finished_players) >= NUM_PLAYERS:
+                logging.info("All players have finished the race.")
+                done_event.set()
+                break
+
+
+
+
 def main():
     parser = argparse.ArgumentParser(description="Run the Ave Ceasar microservice system.")
 
@@ -157,8 +198,33 @@ def main():
     start_docker_compose()
     wait_for_kafka_ready()
 
+    done_event = threading.Event()
+    movement_logger_thread = threading.Thread(target=listen_for_token_movements, args=(done_event,), daemon=True)
+    movement_logger_thread.start()
+
     try:
         listen_for_alive_messages(segment_count)
+
+        # Wenn alle alive: Startsignale senden
+        producer = KafkaProducer(
+            bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+            value_serializer=lambda v: json.dumps(v).encode("utf-8"),
+            key_serializer=lambda k: str(k).encode("utf-8")
+        )
+
+        for player_id in range(1, NUM_PLAYERS + 1):
+            topic = f"start-and-goal-{player_id}"
+            message = {
+                "type": "start",
+                "playerId": f"player-{player_id}",
+                "roundsLeft": ROUNDS
+            }
+            producer.send(topic, key=f"player-{player_id}", value=message)
+            logging.info(f"Sent start signal to {topic} for player-{player_id}")
+
+        producer.flush()
+
+        done_event.wait()
     except KeyboardInterrupt:
         logging.info("Interrupted by user.")
     finally:
