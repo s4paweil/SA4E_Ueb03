@@ -81,6 +81,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ca34ac29-d25c-40d6-a286-90be6d1ee0dc
     container_name: start-and-goal-1
     environment:
       SEGMENT_ID: start-and-goal-1
@@ -100,6 +102,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: edc1821e-b4fe-4d3e-84a2-1822bceab304
     container_name: segment-1-1
     environment:
       SEGMENT_ID: segment-1-1
@@ -119,9 +123,368 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ad669955-063e-4e47-bdcd-c73bd4790638
     container_name: segment-1-2
     environment:
       SEGMENT_ID: segment-1-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 9eb679f2-ec98-499a-a52a-623ca9e550b3
+    container_name: segment-1-3
+    environment:
+      SEGMENT_ID: segment-1-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: e0a4e328-fbca-4d8c-bf90-c60f45e716d9
+    container_name: segment-1-4
+    environment:
+      SEGMENT_ID: segment-1-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 98c76bc0-6ae2-49c8-83a6-f9b1709e224b
+    container_name: segment-1-5
+    environment:
+      SEGMENT_ID: segment-1-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: e5283be1-3e13-4755-b454-c1455bafb098
+    container_name: segment-1-6
+    environment:
+      SEGMENT_ID: segment-1-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 1201d794-f349-4a65-b6d0-74a6e9aac0d3
+    container_name: segment-1-7
+    environment:
+      SEGMENT_ID: segment-1-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 3708b65f-ba22-4445-b6ec-dde1832a7e41
+    container_name: segment-1-8
+    environment:
+      SEGMENT_ID: segment-1-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 47cd2a89-2658-4071-b050-3037e042f1b0
+    container_name: segment-1-9
+    environment:
+      SEGMENT_ID: segment-1-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: c65e18b4-4b69-4f00-b45d-2bc25645409b
+    container_name: segment-1-10
+    environment:
+      SEGMENT_ID: segment-1-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: c1c59cb1-ac3e-41a6-8801-672a4cc5d8a5
+    container_name: segment-1-11
+    environment:
+      SEGMENT_ID: segment-1-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 7c06d8e3-bae9-443b-bcff-4f2622dda4e5
+    container_name: segment-1-12
+    environment:
+      SEGMENT_ID: segment-1-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 35f9f007-f237-40b1-bf8f-cc0aa3e2fcb7
+    container_name: segment-1-13
+    environment:
+      SEGMENT_ID: segment-1-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 62a9dbda-ba79-47ed-8ecd-799119d56db1
+    container_name: segment-1-14
+    environment:
+      SEGMENT_ID: segment-1-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 2a0b6fa5-faee-4889-97e7-1d0d54628760
+    container_name: segment-1-15
+    environment:
+      SEGMENT_ID: segment-1-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 2daab77d-4e1c-4d15-a160-bf8d32f1fcb1
+    container_name: segment-1-16
+    environment:
+      SEGMENT_ID: segment-1-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 4a4875db-10e8-4200-9c94-051ffc3f87bc
+    container_name: segment-1-17
+    environment:
+      SEGMENT_ID: segment-1-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f07b4ca7-4dfa-4059-a946-7315d3518fd3
+    container_name: segment-1-18
+    environment:
+      SEGMENT_ID: segment-1-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-1-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-1-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b2c70670-0844-4c38-85b1-97554cccd7f2
+    container_name: segment-1-19
+    environment:
+      SEGMENT_ID: segment-1-19
       SEGMENT_TYPE: normal
       NEXT_SEGMENTS: start-and-goal-1
       KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
@@ -138,6 +501,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 8d5a7795-c185-4a60-a72b-3fdf2f8f47e6
     container_name: start-and-goal-2
     environment:
       SEGMENT_ID: start-and-goal-2
@@ -157,6 +522,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 801c2271-b6dd-4daa-85b8-3f8ee958f8b3
     container_name: segment-2-1
     environment:
       SEGMENT_ID: segment-2-1
@@ -176,9 +543,368 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: dcfbb51b-29e3-44c6-8726-49ac971bcacf
     container_name: segment-2-2
     environment:
       SEGMENT_ID: segment-2-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 74c6d039-a8fa-4d7d-a129-69a5cd821368
+    container_name: segment-2-3
+    environment:
+      SEGMENT_ID: segment-2-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: fbbcd9ea-e16c-4b43-997f-94cca19a4c7d
+    container_name: segment-2-4
+    environment:
+      SEGMENT_ID: segment-2-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 5678ddfa-ced6-4d2f-888f-08ea6824fb69
+    container_name: segment-2-5
+    environment:
+      SEGMENT_ID: segment-2-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0c3a64b7-22fc-4863-a715-fd4c841c4ff2
+    container_name: segment-2-6
+    environment:
+      SEGMENT_ID: segment-2-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: e4003fb6-1bdd-494d-baa5-2b87054b4bce
+    container_name: segment-2-7
+    environment:
+      SEGMENT_ID: segment-2-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f4046cf8-8163-42bc-81a1-d3a37cb2e20a
+    container_name: segment-2-8
+    environment:
+      SEGMENT_ID: segment-2-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 75797a41-b334-4c66-9dd0-d752d83c3c25
+    container_name: segment-2-9
+    environment:
+      SEGMENT_ID: segment-2-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 39fb438e-ff91-493e-afa0-b39e12e189a0
+    container_name: segment-2-10
+    environment:
+      SEGMENT_ID: segment-2-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ba3f7d93-0706-44d9-b9cb-5abfd2e3458f
+    container_name: segment-2-11
+    environment:
+      SEGMENT_ID: segment-2-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 452f78bb-5a9e-4fc2-b319-d0a6b0341998
+    container_name: segment-2-12
+    environment:
+      SEGMENT_ID: segment-2-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 4fe12bc3-e2a4-4421-8fc7-4db1c3c0b90f
+    container_name: segment-2-13
+    environment:
+      SEGMENT_ID: segment-2-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 7efee562-1c6b-4d91-98da-0e909cf1c85c
+    container_name: segment-2-14
+    environment:
+      SEGMENT_ID: segment-2-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: e1fa7e3d-a61c-4c99-af43-f60099153e5d
+    container_name: segment-2-15
+    environment:
+      SEGMENT_ID: segment-2-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 3091d3f3-2231-4e83-93f3-b5d3ffc1951c
+    container_name: segment-2-16
+    environment:
+      SEGMENT_ID: segment-2-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 32447afb-7bad-4943-a4dc-a03116c269e7
+    container_name: segment-2-17
+    environment:
+      SEGMENT_ID: segment-2-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 9f915a04-9cf1-42c5-b4a8-49da16283f43
+    container_name: segment-2-18
+    environment:
+      SEGMENT_ID: segment-2-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-2-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-2-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 7238cb76-cc2c-4dd4-823b-694919a13cc1
+    container_name: segment-2-19
+    environment:
+      SEGMENT_ID: segment-2-19
       SEGMENT_TYPE: normal
       NEXT_SEGMENTS: start-and-goal-2
       KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
@@ -195,6 +921,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: fffedd2c-f85e-41cb-a450-d3268b09241a
     container_name: start-and-goal-3
     environment:
       SEGMENT_ID: start-and-goal-3
@@ -214,6 +942,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: c633b287-4c03-42c6-9537-69fa8a8a287c
     container_name: segment-3-1
     environment:
       SEGMENT_ID: segment-3-1
@@ -233,11 +963,3310 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: d5b297bd-bbc5-4e31-902d-975e5b6f901b
     container_name: segment-3-2
     environment:
       SEGMENT_ID: segment-3-2
       SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 885dc1ae-b345-4708-b2a9-942a1ba29a08
+    container_name: segment-3-3
+    environment:
+      SEGMENT_ID: segment-3-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ddc95459-1ad3-4e54-a11e-5ca1872e2c77
+    container_name: segment-3-4
+    environment:
+      SEGMENT_ID: segment-3-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 61b1485c-fa10-4a26-8d5d-0fd56e9db9e9
+    container_name: segment-3-5
+    environment:
+      SEGMENT_ID: segment-3-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 898f1c05-5f71-41af-bedf-9a98cb1818e4
+    container_name: segment-3-6
+    environment:
+      SEGMENT_ID: segment-3-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 44c430fc-abf0-4884-a173-4a6e99e931f6
+    container_name: segment-3-7
+    environment:
+      SEGMENT_ID: segment-3-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 8a1a39e6-25c6-47d2-b964-4f9f94939957
+    container_name: segment-3-8
+    environment:
+      SEGMENT_ID: segment-3-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0a843963-adf3-4be4-aa65-f95e250ab842
+    container_name: segment-3-9
+    environment:
+      SEGMENT_ID: segment-3-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 5832dc71-874d-4a16-9b4d-13f2a61aaa56
+    container_name: segment-3-10
+    environment:
+      SEGMENT_ID: segment-3-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: cacb73b4-a4e5-488d-a09a-b8811f38143b
+    container_name: segment-3-11
+    environment:
+      SEGMENT_ID: segment-3-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 2036d7e0-32f9-4e80-8285-89ca6e98c227
+    container_name: segment-3-12
+    environment:
+      SEGMENT_ID: segment-3-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b5bffccd-bb52-4dc5-8e5e-0688b3618e3c
+    container_name: segment-3-13
+    environment:
+      SEGMENT_ID: segment-3-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 118438e3-4d33-47f0-87ea-aaf9f1cf48b3
+    container_name: segment-3-14
+    environment:
+      SEGMENT_ID: segment-3-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 17ea55b0-9680-4146-9772-0bc226d4b7b6
+    container_name: segment-3-15
+    environment:
+      SEGMENT_ID: segment-3-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f85d9c6a-2be2-47a3-9128-5a2c9e622853
+    container_name: segment-3-16
+    environment:
+      SEGMENT_ID: segment-3-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 27b22cd2-5454-4dbc-9f5f-5d731bc689fd
+    container_name: segment-3-17
+    environment:
+      SEGMENT_ID: segment-3-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ee06d5b6-3363-47f5-8cd9-bd31506169e4
+    container_name: segment-3-18
+    environment:
+      SEGMENT_ID: segment-3-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-3-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-3-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 2e6c2ac1-a4ab-41ac-a7bd-d83eefc15d52
+    container_name: segment-3-19
+    environment:
+      SEGMENT_ID: segment-3-19
+      SEGMENT_TYPE: normal
       NEXT_SEGMENTS: start-and-goal-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  start-and-goal-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 5f150c15-546c-4900-a3b3-f1da4905ad82
+    container_name: start-and-goal-4
+    environment:
+      SEGMENT_ID: start-and-goal-4
+      SEGMENT_TYPE: start-goal
+      NEXT_SEGMENTS: segment-4-1
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 598697ac-1a7a-4310-9a23-293105bdbfc1
+    container_name: segment-4-1
+    environment:
+      SEGMENT_ID: segment-4-1
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-2
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 9f27d749-35fd-47b0-8e94-a2836aacb65f
+    container_name: segment-4-2
+    environment:
+      SEGMENT_ID: segment-4-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: aefd28f0-0b86-470d-93e1-04f359a54a1d
+    container_name: segment-4-3
+    environment:
+      SEGMENT_ID: segment-4-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 418e26ea-40f5-447e-9ccf-3e8f866997cb
+    container_name: segment-4-4
+    environment:
+      SEGMENT_ID: segment-4-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 874e42c1-3dbb-4bb9-a0ed-c9c8a3398bcc
+    container_name: segment-4-5
+    environment:
+      SEGMENT_ID: segment-4-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b460c2cb-4c90-49e4-ba4d-d074216ef7c6
+    container_name: segment-4-6
+    environment:
+      SEGMENT_ID: segment-4-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 5d59c89e-6f99-4296-895b-217c2cf956d0
+    container_name: segment-4-7
+    environment:
+      SEGMENT_ID: segment-4-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 85720a69-4aa6-4eb6-922f-7bc6f487ff6b
+    container_name: segment-4-8
+    environment:
+      SEGMENT_ID: segment-4-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 17a7c57c-57a0-4808-b0f8-50af33bd0943
+    container_name: segment-4-9
+    environment:
+      SEGMENT_ID: segment-4-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 61aef529-5050-4f7a-aed5-d7d69b7f327d
+    container_name: segment-4-10
+    environment:
+      SEGMENT_ID: segment-4-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 588aa321-fff8-48ac-8c1d-fdb17a9448b6
+    container_name: segment-4-11
+    environment:
+      SEGMENT_ID: segment-4-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 5f5b1fb5-e54c-4996-85f0-63c10a27f555
+    container_name: segment-4-12
+    environment:
+      SEGMENT_ID: segment-4-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f12549b6-1278-4c6e-b564-3902f9d7b634
+    container_name: segment-4-13
+    environment:
+      SEGMENT_ID: segment-4-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 2dbd4b8e-b842-4098-b3cc-aef55a5f3206
+    container_name: segment-4-14
+    environment:
+      SEGMENT_ID: segment-4-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 4f64f978-9a0c-463c-891b-9b575cc43f05
+    container_name: segment-4-15
+    environment:
+      SEGMENT_ID: segment-4-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 496f3fe4-9c87-4bba-99c2-e7a53c1009fc
+    container_name: segment-4-16
+    environment:
+      SEGMENT_ID: segment-4-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b1f45bb2-91be-4ef6-84d4-3badad7984cd
+    container_name: segment-4-17
+    environment:
+      SEGMENT_ID: segment-4-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: c69e9fb4-d8e7-434c-8a51-36db02eae2ab
+    container_name: segment-4-18
+    environment:
+      SEGMENT_ID: segment-4-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-4-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-4-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: c7a43092-ea21-48ff-a6d8-8c2f39616631
+    container_name: segment-4-19
+    environment:
+      SEGMENT_ID: segment-4-19
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: start-and-goal-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  start-and-goal-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ecac5624-6085-454a-9195-e98488526822
+    container_name: start-and-goal-5
+    environment:
+      SEGMENT_ID: start-and-goal-5
+      SEGMENT_TYPE: start-goal
+      NEXT_SEGMENTS: segment-5-1
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 1593b3fd-e7d8-42a7-a888-b8d04e13d653
+    container_name: segment-5-1
+    environment:
+      SEGMENT_ID: segment-5-1
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-2
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0be9ab66-8f08-404a-ab05-e49b53b92994
+    container_name: segment-5-2
+    environment:
+      SEGMENT_ID: segment-5-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 3c8617e9-37e5-4f65-9ddc-68872fc9476c
+    container_name: segment-5-3
+    environment:
+      SEGMENT_ID: segment-5-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 7f15ae0f-22af-4cef-ac62-7380fa4fe6c0
+    container_name: segment-5-4
+    environment:
+      SEGMENT_ID: segment-5-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: c501e6af-9656-49a4-ad06-f675d6b906cc
+    container_name: segment-5-5
+    environment:
+      SEGMENT_ID: segment-5-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: aa58ab9c-64f9-42b1-ae69-0a7659470147
+    container_name: segment-5-6
+    environment:
+      SEGMENT_ID: segment-5-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: efccd482-fea2-4f9d-bafa-1b15b8d534f1
+    container_name: segment-5-7
+    environment:
+      SEGMENT_ID: segment-5-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 47d4698c-d804-4ec6-bff1-91efb6eae018
+    container_name: segment-5-8
+    environment:
+      SEGMENT_ID: segment-5-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: c399037c-5253-4ede-b019-a8c38f485396
+    container_name: segment-5-9
+    environment:
+      SEGMENT_ID: segment-5-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6b512184-eddf-4378-9a4d-110551f729a2
+    container_name: segment-5-10
+    environment:
+      SEGMENT_ID: segment-5-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6eec3f57-82db-473b-b1bb-8d2737150d6f
+    container_name: segment-5-11
+    environment:
+      SEGMENT_ID: segment-5-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0f7d3cb8-3e45-4cfa-8d48-329e84c2c6c6
+    container_name: segment-5-12
+    environment:
+      SEGMENT_ID: segment-5-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6fa29691-cb6d-444f-8083-0233dd1937e3
+    container_name: segment-5-13
+    environment:
+      SEGMENT_ID: segment-5-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f360e1fa-f6f3-4402-baf4-6fa616bfdc6b
+    container_name: segment-5-14
+    environment:
+      SEGMENT_ID: segment-5-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 4454d881-3b87-4650-8067-8f53c527cf3e
+    container_name: segment-5-15
+    environment:
+      SEGMENT_ID: segment-5-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 77ec2195-5de0-4826-ba5a-50ff5baf51f1
+    container_name: segment-5-16
+    environment:
+      SEGMENT_ID: segment-5-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 488d21e8-711e-46a7-aa3c-dda38622221a
+    container_name: segment-5-17
+    environment:
+      SEGMENT_ID: segment-5-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 847eae35-6f43-403d-bff9-fcbd63f9fff9
+    container_name: segment-5-18
+    environment:
+      SEGMENT_ID: segment-5-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-5-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-5-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 4ac19cbc-8a9d-4749-bd74-8f3bd4935b52
+    container_name: segment-5-19
+    environment:
+      SEGMENT_ID: segment-5-19
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: start-and-goal-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  start-and-goal-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 8d455b6c-3d7b-4af1-b735-c8afb21e5e6f
+    container_name: start-and-goal-6
+    environment:
+      SEGMENT_ID: start-and-goal-6
+      SEGMENT_TYPE: start-goal
+      NEXT_SEGMENTS: segment-6-1
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0e756aa9-1af7-493f-a19e-993738057c38
+    container_name: segment-6-1
+    environment:
+      SEGMENT_ID: segment-6-1
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-2
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 544bdcfb-932c-47a8-9fe8-dcf7653fb47d
+    container_name: segment-6-2
+    environment:
+      SEGMENT_ID: segment-6-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 2b8c81c4-a930-4f49-9cfe-9d31269a02e1
+    container_name: segment-6-3
+    environment:
+      SEGMENT_ID: segment-6-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b40d79ab-39a6-4dfc-a0ff-286a43977699
+    container_name: segment-6-4
+    environment:
+      SEGMENT_ID: segment-6-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 3e070189-ed6a-4731-8dc2-0e12f7ed8dbf
+    container_name: segment-6-5
+    environment:
+      SEGMENT_ID: segment-6-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 81186811-dc7f-4d82-9c4f-553b76307fce
+    container_name: segment-6-6
+    environment:
+      SEGMENT_ID: segment-6-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f2f16481-e9be-40ea-9df3-4478f2dc85bc
+    container_name: segment-6-7
+    environment:
+      SEGMENT_ID: segment-6-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 5fb301a6-80f3-4900-92f0-baf263fd77c5
+    container_name: segment-6-8
+    environment:
+      SEGMENT_ID: segment-6-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: dbd27146-35e0-4521-98c9-a3fb5ab7e288
+    container_name: segment-6-9
+    environment:
+      SEGMENT_ID: segment-6-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 9e362cef-7e9f-4c34-86f9-9ce108332795
+    container_name: segment-6-10
+    environment:
+      SEGMENT_ID: segment-6-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: acdc5aef-40c1-49f5-851c-87a0215edf1d
+    container_name: segment-6-11
+    environment:
+      SEGMENT_ID: segment-6-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f313e0ae-8b3d-4e9f-a36f-d59056d86b91
+    container_name: segment-6-12
+    environment:
+      SEGMENT_ID: segment-6-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 11920646-d155-437b-8ee9-f8456bbf6ab3
+    container_name: segment-6-13
+    environment:
+      SEGMENT_ID: segment-6-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 7e96b458-9b0e-4c81-b629-15ea867f526a
+    container_name: segment-6-14
+    environment:
+      SEGMENT_ID: segment-6-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: bc9f38d2-6196-4113-bdfc-f51de8480b46
+    container_name: segment-6-15
+    environment:
+      SEGMENT_ID: segment-6-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 431918ca-bed2-407c-af99-6ffee1da577f
+    container_name: segment-6-16
+    environment:
+      SEGMENT_ID: segment-6-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 980cac60-bd6a-46c4-8e28-cf89defea8e9
+    container_name: segment-6-17
+    environment:
+      SEGMENT_ID: segment-6-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 95ff817c-17a1-43c6-bdfd-2f56ba3290e3
+    container_name: segment-6-18
+    environment:
+      SEGMENT_ID: segment-6-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-6-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-6-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: baaafa98-a7dd-4625-9545-9d2259bfd12c
+    container_name: segment-6-19
+    environment:
+      SEGMENT_ID: segment-6-19
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: start-and-goal-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  start-and-goal-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: a44ec5a5-ff31-4b9c-9786-2cee44290cdb
+    container_name: start-and-goal-7
+    environment:
+      SEGMENT_ID: start-and-goal-7
+      SEGMENT_TYPE: start-goal
+      NEXT_SEGMENTS: segment-7-1
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 55fdc74e-9c0d-4d92-aa54-ccbf832570e8
+    container_name: segment-7-1
+    environment:
+      SEGMENT_ID: segment-7-1
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-2
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6bfcccac-34e0-447e-bd60-d7235ac1d53d
+    container_name: segment-7-2
+    environment:
+      SEGMENT_ID: segment-7-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 00a5f1d2-48db-41b9-b9a5-6a7b2f5e4dd6
+    container_name: segment-7-3
+    environment:
+      SEGMENT_ID: segment-7-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 430cc2c9-ddf9-4766-bc54-1206764ea5fb
+    container_name: segment-7-4
+    environment:
+      SEGMENT_ID: segment-7-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 4a9da6ad-2578-479b-b3c5-cdce7d641b56
+    container_name: segment-7-5
+    environment:
+      SEGMENT_ID: segment-7-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6d10ca84-eaca-43ab-9b9f-c09803f79aa7
+    container_name: segment-7-6
+    environment:
+      SEGMENT_ID: segment-7-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 7f391381-289c-4afb-9af9-94b096207597
+    container_name: segment-7-7
+    environment:
+      SEGMENT_ID: segment-7-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 856b86ea-3340-4afd-bb65-3049dfea4967
+    container_name: segment-7-8
+    environment:
+      SEGMENT_ID: segment-7-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 58856c59-0023-4338-a6b4-ff6266ef4a72
+    container_name: segment-7-9
+    environment:
+      SEGMENT_ID: segment-7-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b248f096-1421-48df-8dad-4efc1f2c2da9
+    container_name: segment-7-10
+    environment:
+      SEGMENT_ID: segment-7-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6ff03aca-a0a1-450e-96b3-cd14ed2c744a
+    container_name: segment-7-11
+    environment:
+      SEGMENT_ID: segment-7-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 48d566cb-8edb-4f47-99d7-ce4d7eba41e6
+    container_name: segment-7-12
+    environment:
+      SEGMENT_ID: segment-7-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: c484a06b-775d-40f5-911b-512c235d7473
+    container_name: segment-7-13
+    environment:
+      SEGMENT_ID: segment-7-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: cb9bec88-e4a5-4264-af76-adb09de7ebe4
+    container_name: segment-7-14
+    environment:
+      SEGMENT_ID: segment-7-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: e7e72f24-65b7-495b-8e56-03e1cb1186cf
+    container_name: segment-7-15
+    environment:
+      SEGMENT_ID: segment-7-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 657ebdce-11de-4e51-96ea-7e4164bb544b
+    container_name: segment-7-16
+    environment:
+      SEGMENT_ID: segment-7-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 2b6aa817-bbfe-4f82-b42d-8d25b9ae1406
+    container_name: segment-7-17
+    environment:
+      SEGMENT_ID: segment-7-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ae1da429-6374-4b7d-981c-d074750d346b
+    container_name: segment-7-18
+    environment:
+      SEGMENT_ID: segment-7-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-7-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-7-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: d4a5145b-d00a-4098-9df7-0bb2162255ac
+    container_name: segment-7-19
+    environment:
+      SEGMENT_ID: segment-7-19
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: start-and-goal-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  start-and-goal-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: d64f23b8-925f-4d7d-b832-494c85464c59
+    container_name: start-and-goal-8
+    environment:
+      SEGMENT_ID: start-and-goal-8
+      SEGMENT_TYPE: start-goal
+      NEXT_SEGMENTS: segment-8-1
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6c41aad7-da80-4bf4-a2d2-0388f80b767c
+    container_name: segment-8-1
+    environment:
+      SEGMENT_ID: segment-8-1
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-2
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f87e4634-65e2-4c1b-82ed-1531118f53bc
+    container_name: segment-8-2
+    environment:
+      SEGMENT_ID: segment-8-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: e37083bf-65bb-4361-8405-a113d66c4dda
+    container_name: segment-8-3
+    environment:
+      SEGMENT_ID: segment-8-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0fb6b2bd-b44b-40f2-8b47-f42c4a2c776f
+    container_name: segment-8-4
+    environment:
+      SEGMENT_ID: segment-8-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ee256357-1db8-48fb-bf3e-5174e64b250e
+    container_name: segment-8-5
+    environment:
+      SEGMENT_ID: segment-8-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: bbcc7886-ab1e-4a44-996c-2379bb9977e6
+    container_name: segment-8-6
+    environment:
+      SEGMENT_ID: segment-8-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: fa556c13-8bda-46c5-88aa-95b01a9d7dc0
+    container_name: segment-8-7
+    environment:
+      SEGMENT_ID: segment-8-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 87c62bf4-60e5-48d7-af12-7f14e758bd62
+    container_name: segment-8-8
+    environment:
+      SEGMENT_ID: segment-8-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: fefdbb40-93a1-4c49-b20d-7c8e944386d7
+    container_name: segment-8-9
+    environment:
+      SEGMENT_ID: segment-8-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: a6dfe3d3-fd3c-484f-80bc-ae81d8d1223b
+    container_name: segment-8-10
+    environment:
+      SEGMENT_ID: segment-8-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 581cb955-b68c-4d6c-81bc-20c2a8da1dcf
+    container_name: segment-8-11
+    environment:
+      SEGMENT_ID: segment-8-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: dbf3744c-1bf7-4d46-8730-5b0b933de500
+    container_name: segment-8-12
+    environment:
+      SEGMENT_ID: segment-8-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0c150fb2-1b81-40de-9703-b6ff9683bd99
+    container_name: segment-8-13
+    environment:
+      SEGMENT_ID: segment-8-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 96b5fed4-c53a-43a3-b70e-6b286752934a
+    container_name: segment-8-14
+    environment:
+      SEGMENT_ID: segment-8-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 631717ff-98cc-4a5a-a5ad-1321a3983848
+    container_name: segment-8-15
+    environment:
+      SEGMENT_ID: segment-8-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6231b3cb-da63-4090-a1cc-3fb19370abdf
+    container_name: segment-8-16
+    environment:
+      SEGMENT_ID: segment-8-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6838eec5-7f3c-4684-b6be-e89c4b31ef1e
+    container_name: segment-8-17
+    environment:
+      SEGMENT_ID: segment-8-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f7460fb6-7aac-4c25-856c-6153b8d6e402
+    container_name: segment-8-18
+    environment:
+      SEGMENT_ID: segment-8-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-8-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-8-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: fefbe85e-376b-4b61-a34f-379e49cce8e7
+    container_name: segment-8-19
+    environment:
+      SEGMENT_ID: segment-8-19
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: start-and-goal-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  start-and-goal-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: e097dfc5-9b2b-4e3a-b5db-b5a91e32c340
+    container_name: start-and-goal-9
+    environment:
+      SEGMENT_ID: start-and-goal-9
+      SEGMENT_TYPE: start-goal
+      NEXT_SEGMENTS: segment-9-1
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f7f94c74-1250-4c54-ad50-1f7f7df2e2f5
+    container_name: segment-9-1
+    environment:
+      SEGMENT_ID: segment-9-1
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-2
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b86e2d46-f5bc-4435-9eb1-f4b59b211e94
+    container_name: segment-9-2
+    environment:
+      SEGMENT_ID: segment-9-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 408bac48-5c2e-437e-ab96-b619c6377a97
+    container_name: segment-9-3
+    environment:
+      SEGMENT_ID: segment-9-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 978f99cd-5e73-4a02-83be-614e8ecb801e
+    container_name: segment-9-4
+    environment:
+      SEGMENT_ID: segment-9-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 8a41babd-3a04-4d9d-aa2f-454fcf03e85e
+    container_name: segment-9-5
+    environment:
+      SEGMENT_ID: segment-9-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f143e30f-4180-415c-b476-35364ec4e977
+    container_name: segment-9-6
+    environment:
+      SEGMENT_ID: segment-9-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 607d86ad-00ac-47e3-a183-57fa86a8c8b8
+    container_name: segment-9-7
+    environment:
+      SEGMENT_ID: segment-9-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 196169af-9331-49db-93c0-200e989e4879
+    container_name: segment-9-8
+    environment:
+      SEGMENT_ID: segment-9-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: ab092f5c-aeb7-41e4-bbf6-ba8c5441d28d
+    container_name: segment-9-9
+    environment:
+      SEGMENT_ID: segment-9-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0ae6f685-4b0a-4ff7-9a16-cb844748258c
+    container_name: segment-9-10
+    environment:
+      SEGMENT_ID: segment-9-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 4ca3fa2a-5227-44b6-a465-3ed0d72ab9eb
+    container_name: segment-9-11
+    environment:
+      SEGMENT_ID: segment-9-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 4dda0ef2-45de-4264-b5ba-52c4e490b2d5
+    container_name: segment-9-12
+    environment:
+      SEGMENT_ID: segment-9-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 0cdd38ec-91bf-4655-8e31-6a23d0168811
+    container_name: segment-9-13
+    environment:
+      SEGMENT_ID: segment-9-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 5532e2af-2db5-4e2e-91ca-a5d782ecf0f1
+    container_name: segment-9-14
+    environment:
+      SEGMENT_ID: segment-9-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: de7ef686-b424-478e-86e1-817a73ace86c
+    container_name: segment-9-15
+    environment:
+      SEGMENT_ID: segment-9-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 115c3bdc-4432-4603-9827-15ffe35fa4cb
+    container_name: segment-9-16
+    environment:
+      SEGMENT_ID: segment-9-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: e1c7a0e0-a066-4e19-91ea-6c6d28e20a1e
+    container_name: segment-9-17
+    environment:
+      SEGMENT_ID: segment-9-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 8377c74d-c5bf-496f-a580-6c799ae81a95
+    container_name: segment-9-18
+    environment:
+      SEGMENT_ID: segment-9-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-9-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-9-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 8a8a79a2-ddd6-4468-8625-ee116133552f
+    container_name: segment-9-19
+    environment:
+      SEGMENT_ID: segment-9-19
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: start-and-goal-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  start-and-goal-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: bf988559-ab3b-4c01-9750-7c5291352542
+    container_name: start-and-goal-10
+    environment:
+      SEGMENT_ID: start-and-goal-10
+      SEGMENT_TYPE: start-goal
+      NEXT_SEGMENTS: segment-10-1
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 808c2950-c6ff-4edc-972e-9a6a3f6e6b75
+    container_name: segment-10-1
+    environment:
+      SEGMENT_ID: segment-10-1
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-2
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b351705f-b990-4aa9-8244-ce9f343adb11
+    container_name: segment-10-2
+    environment:
+      SEGMENT_ID: segment-10-2
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-3
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 558f7edd-d335-4452-aa30-4a35366db391
+    container_name: segment-10-3
+    environment:
+      SEGMENT_ID: segment-10-3
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-4
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 2865ff35-48a2-47c0-be44-98c53dcdfc99
+    container_name: segment-10-4
+    environment:
+      SEGMENT_ID: segment-10-4
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-5
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-5:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 396cbf32-87ca-484c-9e7d-841b48d67f5d
+    container_name: segment-10-5
+    environment:
+      SEGMENT_ID: segment-10-5
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-6
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-6:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b3133cf5-fafe-45d8-bba7-556095c2b92b
+    container_name: segment-10-6
+    environment:
+      SEGMENT_ID: segment-10-6
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-7
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-7:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: d53a25e5-3b19-4eb7-bd40-fb117b1683fe
+    container_name: segment-10-7
+    environment:
+      SEGMENT_ID: segment-10-7
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-8
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-8:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b1d30b83-bf58-4d8e-8af4-3739f1e31ed1
+    container_name: segment-10-8
+    environment:
+      SEGMENT_ID: segment-10-8
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-9
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-9:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 32f3c66e-5b0a-4683-99d1-976ff79e7408
+    container_name: segment-10-9
+    environment:
+      SEGMENT_ID: segment-10-9
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-10
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-10:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b344c24e-fad1-4ad1-b7e7-3fc75c0d2085
+    container_name: segment-10-10
+    environment:
+      SEGMENT_ID: segment-10-10
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-11
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-11:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: b52f78d6-c8ed-421c-84a6-0ace63a66b2d
+    container_name: segment-10-11
+    environment:
+      SEGMENT_ID: segment-10-11
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-12
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-12:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 8ad332c1-ca26-4805-bef2-1a1105e521e2
+    container_name: segment-10-12
+    environment:
+      SEGMENT_ID: segment-10-12
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-13
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-13:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 1713199f-ac30-4066-9d52-2ad39d617652
+    container_name: segment-10-13
+    environment:
+      SEGMENT_ID: segment-10-13
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-14
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-14:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 6c80e311-677c-4d1e-bb46-eb555cb9a655
+    container_name: segment-10-14
+    environment:
+      SEGMENT_ID: segment-10-14
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-15
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-15:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 98404242-7f65-48c6-b29e-8caeabca8efb
+    container_name: segment-10-15
+    environment:
+      SEGMENT_ID: segment-10-15
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-16
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-16:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 077865f0-a261-4d53-8a69-4daa90ee32cf
+    container_name: segment-10-16
+    environment:
+      SEGMENT_ID: segment-10-16
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-17
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-17:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 104c6b0c-402a-433e-9a0e-05dbd7e3127f
+    container_name: segment-10-17
+    environment:
+      SEGMENT_ID: segment-10-17
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-18
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-18:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: 57d8e4db-7ef3-4069-aa32-75cdf9046865
+    container_name: segment-10-18
+    environment:
+      SEGMENT_ID: segment-10-18
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: segment-10-19
+      KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
+    depends_on:
+      kafka-1:
+        condition: service_started
+      kafka-2:
+        condition: service_started
+      kafka-3:
+        condition: service_started
+    networks:
+    - kafka-net
+  segment-10-19:
+    build:
+      context: .
+      dockerfile: Dockerfile.segment
+      args:
+        CACHE_BUSTER: f7a20782-6665-47b4-bc6d-aeade5b3abb0
+    container_name: segment-10-19
+    environment:
+      SEGMENT_ID: segment-10-19
+      SEGMENT_TYPE: normal
+      NEXT_SEGMENTS: start-and-goal-10
       KAFKA_BOOTSTRAP_SERVERS: kafka-1:19092,kafka-2:19092,kafka-3:19092
     depends_on:
       kafka-1:

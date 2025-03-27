@@ -1,3 +1,4 @@
+ARG CACHE_BUSTER
 FROM python:3.10-slim
 WORKDIR /app
 COPY segment.py .

@@ -1,19 +1,22 @@
-#!/usr/bin/env python3
-import sys
 import json
 import os
-from pathlib import Path
-import yaml
+import sys
 import uuid
+import yaml
 
 MAP_FILE = "map.json"
 COMPOSE_FILE = "docker-compose.yaml"
 SEGMENT_IMAGE = "segment-service:latest"
 KAFKA_NETWORK = "kafka-net"
 
-# ==== TRACK GENERATION ====
-
 def generate_tracks(num_tracks: int, length_of_track: int):
+    """
+    Generates a data structure with 'num_tracks' circular tracks.
+    Each track has exactly 'length_of_track' segments:
+      - 1 segment: 'start-and-goal-t'
+      - (length_of_track - 1) segments: 'segment-t-c'
+    Returns a Python dict that can be serialized to JSON.
+    """
     all_tracks = []
     total_segments = 0
 
@@ -21,37 +24,55 @@ def generate_tracks(num_tracks: int, length_of_track: int):
         track_id = str(t)
         segments = []
 
+        # First segment: start-and-goal-t
         start_segment_id = f"start-and-goal-{t}"
-        next_segments = [f"segment-{t}-1"] if length_of_track > 1 else [start_segment_id]
+        if length_of_track == 1:
+            # Edge case: track length is 1 => no "normal" segments, loops onto itself
+            next_segments = [start_segment_id]
+        else:
+            next_segments = [f"segment-{t}-1"]
 
-        segments.append({
+        start_segment = {
             "segmentId": start_segment_id,
             "type": "start-goal",
             "nextSegments": next_segments
-        })
+        }
+        segments.append(start_segment)
         total_segments += 1
 
+        # Create normal segments: segment-t-c for c in [1..(L-1)]
         for c in range(1, length_of_track):
             seg_id = f"segment-{t}-{c}"
-            next_segs = [start_segment_id] if c == length_of_track - 1 else [f"segment-{t}-{c+1}"]
+            # If this is the last normal segment, it loops back to 'start-and-goal-t'
+            if c == length_of_track - 1:
+                next_segs = [start_segment_id]
+            else:
+                next_segs = [f"segment-{t}-{c+1}"]
 
-            segments.append({
+            segment = {
                 "segmentId": seg_id,
                 "type": "normal",
                 "nextSegments": next_segs
-            })
+            }
+            segments.append(segment)
             total_segments += 1
 
-        all_tracks.append({
+        track_definition = {
             "trackId": track_id,
             "segments": segments
-        })
+        }
+        all_tracks.append(track_definition)
 
-    return {"totalSegments": total_segments, "tracks": all_tracks}
+    return {
+        "totalSegments": total_segments,
+        "tracks": all_tracks
+    }
+
+
 
 # ==== DOCKER COMPOSE GENERATION ====
 def generate_compose(map_data):
-    kafka_cluster_id = "4L6g3nShT-eMCtK--X86sw"  # Fester CLUSTER_ID wie im funktionierenden Beispiel
+    kafka_cluster_id = "4L6g3nShT-eMCtK--X86sw"
     compose = {
         "version": "3.9",
         "networks": {
@@ -100,7 +121,10 @@ def generate_compose(map_data):
             service = {
                 "build": {
                     "context": ".",
-                    "dockerfile": "Dockerfile.segment"
+                    "dockerfile": "Dockerfile.segment",
+                    "args": {
+                        "CACHE_BUSTER": str(uuid.uuid4())
+                    }
                 },
                 "container_name": seg_id,
                 "environment": {
@@ -121,7 +145,7 @@ def generate_compose(map_data):
     return compose
 
 
-# ==== MAIN ====
+
 
 def main():
     if len(sys.argv) < 2:
@@ -145,7 +169,7 @@ def main():
 
     elif mode == "--use-existing":
         if not os.path.exists(MAP_FILE):
-            print(f"[✘] '{MAP_FILE}' not found. Use --generate to create one.")
+            print(f"[\u2718] '{MAP_FILE}' not found. Use --generate to create one.")
             sys.exit(1)
         with open(MAP_FILE, "r", encoding="utf-8") as f:
             map_data = json.load(f)
@@ -155,11 +179,11 @@ def main():
         print("Unknown mode:", mode)
         sys.exit(1)
 
-    # Compose-File erzeugen
     compose_data = generate_compose(map_data)
     with open(COMPOSE_FILE, "w", encoding="utf-8") as f:
         yaml.dump(compose_data, f, sort_keys=False)
     print(f"Generated {COMPOSE_FILE}.")
+
 
 if __name__ == "__main__":
     main()
