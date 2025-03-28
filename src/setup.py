@@ -1,5 +1,6 @@
 import json
 import os
+import random
 import sys
 import uuid
 import yaml
@@ -10,65 +11,114 @@ SEGMENT_IMAGE = "segment-service:latest"
 KAFKA_NETWORK = "kafka-net"
 
 def generate_tracks(num_tracks: int, length_of_track: int):
-    """
-    Generates a data structure with 'num_tracks' circular tracks.
-    Each track has exactly 'length_of_track' segments:
-      - 1 segment: 'start-and-goal-t'
-      - (length_of_track - 1) segments: 'segment-t-c'
-    Returns a Python dict that can be serialized to JSON.
-    """
     all_tracks = []
     total_segments = 0
 
+    # Caesar-Gasse als separater Track (liegt "oberhalb" von Track 1)
+    caesar_track = {
+        "trackId": "caesar",
+        "segments": []
+    }
+    caesar_ids = [f"caesar-{i}" for i in range(3)]
+    for i, seg_id in enumerate(caesar_ids):
+        next_seg = caesar_ids[i + 1] if i < 2 else "segment-1-1"
+        caesar_track["segments"].append({
+            "segmentId": seg_id,
+            "type": "caesar",
+            "nextSegments": [next_seg]
+        })
+        total_segments += 1
+    all_tracks.append(caesar_track)
+
+    # Erzeugen der Reihenfolge der besonderen Segmenttypen für Tracks
+    segment_types = []
+    segment_types.append("start-goal")
+    segment_types.append("normal")
+    for i in range(1, length_of_track):
+        if random.randint(1, 100) <= 10:
+            segment_types.append("bottleneck")
+        elif random.randint(1, 100) <= 30:
+            segment_types.append("wall-divided")
+        else:
+            segment_types.append("normal")
+
+    # Erzeugen der Tracks
     for t in range(1, num_tracks + 1):
         track_id = str(t)
         segments = []
 
-        # First segment: start-and-goal-t
+        # Start-and-goal Segment
         start_segment_id = f"start-and-goal-{t}"
-        if length_of_track == 1:
-            # Edge case: track length is 1 => no "normal" segments, loops onto itself
-            next_segments = [start_segment_id]
-        else:
-            next_segments = [f"segment-{t}-1"]
-
-        start_segment = {
+        next_segments = [f"segment-{t}-1"]
+        if t > 1:
+            next_segments.append(f"segment-{t-1}-1")
+        if t < num_tracks:
+            next_segments.append(f"segment-{t+1}-1")
+        
+        segments.append({
             "segmentId": start_segment_id,
             "type": "start-goal",
             "nextSegments": next_segments
-        }
-        segments.append(start_segment)
+        })
         total_segments += 1
 
-        # Create normal segments: segment-t-c for c in [1..(L-1)]
-        for c in range(1, length_of_track):
-            seg_id = f"segment-{t}-{c}"
-            # If this is the last normal segment, it loops back to 'start-and-goal-t'
-            if c == length_of_track - 1:
-                next_segs = [start_segment_id]
-            else:
-                next_segs = [f"segment-{t}-{c+1}"]
+        # Erzeugen der weitere Segmente
+        for i in range(1, length_of_track):
+            seg_type = segment_types[i]
+            if seg_type == "bottleneck" and t != 1:
+                continue
 
-            segment = {
+            seg_id = f"segment-{t}-{i}"
+            next_segments = []
+            next_index = i + 1
+            next_type = segment_types[next_index]
+
+            if i == length_of_track - 1:
+                seg_type = "normal"
+                next_segments.append(f"start-and-goal-{t}")
+                if t > 1:
+                    next_segments.append(f"start-and-goal-{t-1}")
+                if t < num_tracks:
+                    next_segments.append(f"start-and-goal-{t+1}")
+                if t == 1:
+                    next_segments.append("caesar-0")
+            elif seg_type == "wall-divided":
+                if next_type == "botteckneck":
+                    next_segments.append(f"segment-1-{next_index}")
+                else:
+                    next_segments.append(f"segment-{t}-{next_index}")
+            elif seg_type == "bottleneck" and t == 1:
+                if next_type == "bottleneck":
+                    next_segments.append(f"segment-1-{next_index}")
+                else:
+                    for j in range(1, num_tracks + 1):
+                        next_segments.append(f"segment-{j}-{next_index}")
+            else:
+                if next_type == "bottleneck":
+                    next_segments.append(f"segment-1-{next_index}")
+                else:
+                    next_segments.append(f"segment-{t}-{next_index}")
+                    if t > 1:
+                        next_segments.append(f"segment-{t-1}-{next_index}")
+                    if t < num_tracks:
+                        next_segments.append(f"segment-{t+1}-{next_index}")
+
+            segments.append({
                 "segmentId": seg_id,
-                "type": "normal",
-                "nextSegments": next_segs
-            }
-            segments.append(segment)
+                "type": seg_type,
+                "nextSegments": next_segments
+            })
             total_segments += 1
 
-        track_definition = {
-            "trackId": track_id,
+        all_tracks.append({
+            "trackId": str(t),
             "segments": segments
-        }
-        all_tracks.append(track_definition)
+        })
 
     return {
         "totalSegments": total_segments,
         "tracks": all_tracks
     }
-
-
 
 # ==== DOCKER COMPOSE GENERATION ====
 def generate_compose(map_data):

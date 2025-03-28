@@ -2,9 +2,11 @@ import argparse
 import json
 import logging
 import os
+import random
 import signal
 import sys
 import subprocess
+import threading
 import time
 import uuid
 
@@ -16,6 +18,7 @@ MAP_FILE = "map.json"
 KAFKA_BOOTSTRAP_SERVERS = ['localhost:29092', 'localhost:39092', 'localhost:49092']
 STATUS_TOPIC = "segment-status"
 MOVEMENT_TOPIC = "token-movement"
+FINISHED_PLAYERS_TOPIC = "finished-players"
 COMPOSE_FILE = "docker-compose.yaml"
 
 MAX_SEGMENTS = 100
@@ -133,11 +136,7 @@ def listen_for_alive_messages(expected_count):
     consumer = KafkaConsumer(
         STATUS_TOPIC,
         bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-        group_id="runpy-controller-",
-        value_deserializer=lambda m: json.loads(m.decode("utf-8")),
-        key_deserializer=lambda k: k.decode("utf-8") if k else None,
-        auto_offset_reset="earliest",
-        enable_auto_commit=True
+        value_deserializer=lambda m: json.loads(m.decode("utf-8"))
     )
     received_segments = set()
     for msg in consumer:
@@ -152,6 +151,54 @@ def listen_for_alive_messages(expected_count):
         if len(received_segments) >= expected_count:
             logging.info("All segments reported alive.")
             break
+
+# Listen for Finished Players
+def listen_for_finished_players(done_event, num_players):
+    #logging.info("Listening for finished player messages...")
+    consumer = KafkaConsumer(
+        FINISHED_PLAYERS_TOPIC,
+        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+        value_deserializer=lambda m: json.loads(m.decode("utf-8"))
+    )
+
+    finished_players = set()
+    for msg in consumer:
+        data = msg.value
+        player_id = data.get("player_id", "unknown")
+        has_greeted_caesar = data.get("has_greeted_caesar")
+        if player_id not in finished_players:
+            finished_players.add(player_id)
+            #logging.info(f"Received finished player message. Now {len(finished_players)} have finished.")
+            if has_greeted_caesar:
+                logging.info(f"[FINISH] Player {player_id} has finished the race!")
+            else:
+                logging.info(f"[FINISH] Player {player_id} has finished the race but not greeted caesar.")
+            
+            if len(finished_players) >= num_players:
+                logging.info("[END] All Players have finished the race.")
+                input("Press Enter to shut down program...")
+                done_event.set()
+                break
+
+# Listen for Token Movements
+def listen_for_token_movements():
+    logging.info("Listening for token movement messages...")
+    consumer = KafkaConsumer(
+        MOVEMENT_TOPIC,
+        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+        value_deserializer=lambda m: json.loads(m.decode("utf-8"))
+    )
+    for msg in consumer:
+        logging.info(msg.value.get("message"))
+
+def init_player(player_id):
+    cards = sorted([random.randint(1,6) for _ in range(3)], reverse=True)
+    return {
+        "player_id": player_id,
+        "round": 0,
+        "has_greeted_caesar": False,
+        "cards": cards,
+    }
 
 
 def main():
@@ -186,8 +233,43 @@ def main():
     start_docker_compose()
     wait_for_kafka_ready()
 
+    num_players = args.num_tracks
+
+    # Listener for finished Players
+    done_event = threading.Event()
+    finished_player_listener_thread = threading.Thread(target=listen_for_finished_players, args=(done_event, num_players), daemon=True)
+    finished_player_listener_thread.start()
+
+    # Logger for Movement
+    movement_logger_thread = threading.Thread(target=listen_for_token_movements, args=(), daemon=True)
+    movement_logger_thread.start()
+
     try:
         listen_for_alive_messages(segment_count)
+
+        producer = KafkaProducer(
+            bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+            value_serializer=lambda v: json.dumps(v).encode("utf-8")
+        )
+
+        logging.info("Giving Kafka a short time to create Segment Topcis..")
+        time.sleep(3)
+
+        num_players = args.num_tracks
+        for player_id in range(1, num_players + 1):
+            topic = f"start-and-goal-{player_id}"
+            player = init_player(player_id)
+            producer.send(topic, value={
+                "event": "start",
+                "player": player
+            })
+            producer.flush()
+
+            logging.info(f"Player {player_id} started at segment {topic}.")
+            time.sleep(3)
+
+        producer.flush()
+        done_event.wait()
     except KeyboardInterrupt:
         logging.info("Interrupted by user.")
     finally:

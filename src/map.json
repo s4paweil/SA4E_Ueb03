@@ -1,6 +1,32 @@
 {
-  "totalSegments": 200,
+  "totalSegments": 31,
   "tracks": [
+    {
+      "trackId": "caesar",
+      "segments": [
+        {
+          "segmentId": "caesar-0",
+          "type": "caesar",
+          "nextSegments": [
+            "caesar-1"
+          ]
+        },
+        {
+          "segmentId": "caesar-1",
+          "type": "caesar",
+          "nextSegments": [
+            "caesar-2"
+          ]
+        },
+        {
+          "segmentId": "caesar-2",
+          "type": "caesar",
+          "nextSegments": [
+            "segment-1-1"
+          ]
+        }
+      ]
+    },
     {
       "trackId": "1",
       "segments": [
@@ -8,19 +34,21 @@
           "segmentId": "start-and-goal-1",
           "type": "start-goal",
           "nextSegments": [
-            "segment-1-1"
+            "segment-1-1",
+            "segment-2-1"
           ]
         },
         {
           "segmentId": "segment-1-1",
           "type": "normal",
           "nextSegments": [
-            "segment-1-2"
+            "segment-1-2",
+            "segment-2-2"
           ]
         },
         {
           "segmentId": "segment-1-2",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-1-3"
           ]
@@ -29,12 +57,13 @@
           "segmentId": "segment-1-3",
           "type": "normal",
           "nextSegments": [
-            "segment-1-4"
+            "segment-1-4",
+            "segment-2-4"
           ]
         },
         {
           "segmentId": "segment-1-4",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-1-5"
           ]
@@ -43,7 +72,8 @@
           "segmentId": "segment-1-5",
           "type": "normal",
           "nextSegments": [
-            "segment-1-6"
+            "segment-1-6",
+            "segment-2-6"
           ]
         },
         {
@@ -55,14 +85,16 @@
         },
         {
           "segmentId": "segment-1-7",
-          "type": "normal",
+          "type": "bottleneck",
           "nextSegments": [
-            "segment-1-8"
+            "segment-1-8",
+            "segment-2-8",
+            "segment-3-8"
           ]
         },
         {
           "segmentId": "segment-1-8",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-1-9"
           ]
@@ -71,77 +103,9 @@
           "segmentId": "segment-1-9",
           "type": "normal",
           "nextSegments": [
-            "segment-1-10"
-          ]
-        },
-        {
-          "segmentId": "segment-1-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-11"
-          ]
-        },
-        {
-          "segmentId": "segment-1-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-12"
-          ]
-        },
-        {
-          "segmentId": "segment-1-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-13"
-          ]
-        },
-        {
-          "segmentId": "segment-1-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-14"
-          ]
-        },
-        {
-          "segmentId": "segment-1-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-15"
-          ]
-        },
-        {
-          "segmentId": "segment-1-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-16"
-          ]
-        },
-        {
-          "segmentId": "segment-1-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-17"
-          ]
-        },
-        {
-          "segmentId": "segment-1-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-18"
-          ]
-        },
-        {
-          "segmentId": "segment-1-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-1-19"
-          ]
-        },
-        {
-          "segmentId": "segment-1-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-1"
+            "start-and-goal-1",
+            "start-and-goal-2",
+            "caesar-0"
           ]
         }
       ]
@@ -153,19 +117,23 @@
           "segmentId": "start-and-goal-2",
           "type": "start-goal",
           "nextSegments": [
-            "segment-2-1"
+            "segment-2-1",
+            "segment-1-1",
+            "segment-3-1"
           ]
         },
         {
           "segmentId": "segment-2-1",
           "type": "normal",
           "nextSegments": [
-            "segment-2-2"
+            "segment-2-2",
+            "segment-1-2",
+            "segment-3-2"
           ]
         },
         {
           "segmentId": "segment-2-2",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-2-3"
           ]
@@ -174,12 +142,14 @@
           "segmentId": "segment-2-3",
           "type": "normal",
           "nextSegments": [
-            "segment-2-4"
+            "segment-2-4",
+            "segment-1-4",
+            "segment-3-4"
           ]
         },
         {
           "segmentId": "segment-2-4",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-2-5"
           ]
@@ -188,26 +158,21 @@
           "segmentId": "segment-2-5",
           "type": "normal",
           "nextSegments": [
-            "segment-2-6"
+            "segment-2-6",
+            "segment-1-6",
+            "segment-3-6"
           ]
         },
         {
           "segmentId": "segment-2-6",
           "type": "normal",
           "nextSegments": [
-            "segment-2-7"
-          ]
-        },
-        {
-          "segmentId": "segment-2-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-8"
+            "segment-1-7"
           ]
         },
         {
           "segmentId": "segment-2-8",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-2-9"
           ]
@@ -216,77 +181,9 @@
           "segmentId": "segment-2-9",
           "type": "normal",
           "nextSegments": [
-            "segment-2-10"
-          ]
-        },
-        {
-          "segmentId": "segment-2-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-11"
-          ]
-        },
-        {
-          "segmentId": "segment-2-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-12"
-          ]
-        },
-        {
-          "segmentId": "segment-2-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-13"
-          ]
-        },
-        {
-          "segmentId": "segment-2-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-14"
-          ]
-        },
-        {
-          "segmentId": "segment-2-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-15"
-          ]
-        },
-        {
-          "segmentId": "segment-2-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-16"
-          ]
-        },
-        {
-          "segmentId": "segment-2-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-17"
-          ]
-        },
-        {
-          "segmentId": "segment-2-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-18"
-          ]
-        },
-        {
-          "segmentId": "segment-2-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-2-19"
-          ]
-        },
-        {
-          "segmentId": "segment-2-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-2"
+            "start-and-goal-2",
+            "start-and-goal-1",
+            "start-and-goal-3"
           ]
         }
       ]
@@ -298,19 +195,21 @@
           "segmentId": "start-and-goal-3",
           "type": "start-goal",
           "nextSegments": [
-            "segment-3-1"
+            "segment-3-1",
+            "segment-2-1"
           ]
         },
         {
           "segmentId": "segment-3-1",
           "type": "normal",
           "nextSegments": [
-            "segment-3-2"
+            "segment-3-2",
+            "segment-2-2"
           ]
         },
         {
           "segmentId": "segment-3-2",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-3-3"
           ]
@@ -319,12 +218,13 @@
           "segmentId": "segment-3-3",
           "type": "normal",
           "nextSegments": [
-            "segment-3-4"
+            "segment-3-4",
+            "segment-2-4"
           ]
         },
         {
           "segmentId": "segment-3-4",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-3-5"
           ]
@@ -333,26 +233,20 @@
           "segmentId": "segment-3-5",
           "type": "normal",
           "nextSegments": [
-            "segment-3-6"
+            "segment-3-6",
+            "segment-2-6"
           ]
         },
         {
           "segmentId": "segment-3-6",
           "type": "normal",
           "nextSegments": [
-            "segment-3-7"
-          ]
-        },
-        {
-          "segmentId": "segment-3-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-8"
+            "segment-1-7"
           ]
         },
         {
           "segmentId": "segment-3-8",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
             "segment-3-9"
           ]
@@ -361,1092 +255,8 @@
           "segmentId": "segment-3-9",
           "type": "normal",
           "nextSegments": [
-            "segment-3-10"
-          ]
-        },
-        {
-          "segmentId": "segment-3-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-11"
-          ]
-        },
-        {
-          "segmentId": "segment-3-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-12"
-          ]
-        },
-        {
-          "segmentId": "segment-3-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-13"
-          ]
-        },
-        {
-          "segmentId": "segment-3-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-14"
-          ]
-        },
-        {
-          "segmentId": "segment-3-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-15"
-          ]
-        },
-        {
-          "segmentId": "segment-3-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-16"
-          ]
-        },
-        {
-          "segmentId": "segment-3-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-17"
-          ]
-        },
-        {
-          "segmentId": "segment-3-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-18"
-          ]
-        },
-        {
-          "segmentId": "segment-3-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-3-19"
-          ]
-        },
-        {
-          "segmentId": "segment-3-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-3"
-          ]
-        }
-      ]
-    },
-    {
-      "trackId": "4",
-      "segments": [
-        {
-          "segmentId": "start-and-goal-4",
-          "type": "start-goal",
-          "nextSegments": [
-            "segment-4-1"
-          ]
-        },
-        {
-          "segmentId": "segment-4-1",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-2"
-          ]
-        },
-        {
-          "segmentId": "segment-4-2",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-3"
-          ]
-        },
-        {
-          "segmentId": "segment-4-3",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-4"
-          ]
-        },
-        {
-          "segmentId": "segment-4-4",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-5"
-          ]
-        },
-        {
-          "segmentId": "segment-4-5",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-6"
-          ]
-        },
-        {
-          "segmentId": "segment-4-6",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-7"
-          ]
-        },
-        {
-          "segmentId": "segment-4-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-8"
-          ]
-        },
-        {
-          "segmentId": "segment-4-8",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-9"
-          ]
-        },
-        {
-          "segmentId": "segment-4-9",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-10"
-          ]
-        },
-        {
-          "segmentId": "segment-4-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-11"
-          ]
-        },
-        {
-          "segmentId": "segment-4-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-12"
-          ]
-        },
-        {
-          "segmentId": "segment-4-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-13"
-          ]
-        },
-        {
-          "segmentId": "segment-4-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-14"
-          ]
-        },
-        {
-          "segmentId": "segment-4-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-15"
-          ]
-        },
-        {
-          "segmentId": "segment-4-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-16"
-          ]
-        },
-        {
-          "segmentId": "segment-4-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-17"
-          ]
-        },
-        {
-          "segmentId": "segment-4-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-18"
-          ]
-        },
-        {
-          "segmentId": "segment-4-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-4-19"
-          ]
-        },
-        {
-          "segmentId": "segment-4-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-4"
-          ]
-        }
-      ]
-    },
-    {
-      "trackId": "5",
-      "segments": [
-        {
-          "segmentId": "start-and-goal-5",
-          "type": "start-goal",
-          "nextSegments": [
-            "segment-5-1"
-          ]
-        },
-        {
-          "segmentId": "segment-5-1",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-2"
-          ]
-        },
-        {
-          "segmentId": "segment-5-2",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-3"
-          ]
-        },
-        {
-          "segmentId": "segment-5-3",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-4"
-          ]
-        },
-        {
-          "segmentId": "segment-5-4",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-5"
-          ]
-        },
-        {
-          "segmentId": "segment-5-5",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-6"
-          ]
-        },
-        {
-          "segmentId": "segment-5-6",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-7"
-          ]
-        },
-        {
-          "segmentId": "segment-5-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-8"
-          ]
-        },
-        {
-          "segmentId": "segment-5-8",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-9"
-          ]
-        },
-        {
-          "segmentId": "segment-5-9",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-10"
-          ]
-        },
-        {
-          "segmentId": "segment-5-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-11"
-          ]
-        },
-        {
-          "segmentId": "segment-5-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-12"
-          ]
-        },
-        {
-          "segmentId": "segment-5-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-13"
-          ]
-        },
-        {
-          "segmentId": "segment-5-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-14"
-          ]
-        },
-        {
-          "segmentId": "segment-5-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-15"
-          ]
-        },
-        {
-          "segmentId": "segment-5-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-16"
-          ]
-        },
-        {
-          "segmentId": "segment-5-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-17"
-          ]
-        },
-        {
-          "segmentId": "segment-5-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-18"
-          ]
-        },
-        {
-          "segmentId": "segment-5-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-5-19"
-          ]
-        },
-        {
-          "segmentId": "segment-5-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-5"
-          ]
-        }
-      ]
-    },
-    {
-      "trackId": "6",
-      "segments": [
-        {
-          "segmentId": "start-and-goal-6",
-          "type": "start-goal",
-          "nextSegments": [
-            "segment-6-1"
-          ]
-        },
-        {
-          "segmentId": "segment-6-1",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-2"
-          ]
-        },
-        {
-          "segmentId": "segment-6-2",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-3"
-          ]
-        },
-        {
-          "segmentId": "segment-6-3",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-4"
-          ]
-        },
-        {
-          "segmentId": "segment-6-4",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-5"
-          ]
-        },
-        {
-          "segmentId": "segment-6-5",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-6"
-          ]
-        },
-        {
-          "segmentId": "segment-6-6",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-7"
-          ]
-        },
-        {
-          "segmentId": "segment-6-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-8"
-          ]
-        },
-        {
-          "segmentId": "segment-6-8",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-9"
-          ]
-        },
-        {
-          "segmentId": "segment-6-9",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-10"
-          ]
-        },
-        {
-          "segmentId": "segment-6-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-11"
-          ]
-        },
-        {
-          "segmentId": "segment-6-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-12"
-          ]
-        },
-        {
-          "segmentId": "segment-6-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-13"
-          ]
-        },
-        {
-          "segmentId": "segment-6-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-14"
-          ]
-        },
-        {
-          "segmentId": "segment-6-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-15"
-          ]
-        },
-        {
-          "segmentId": "segment-6-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-16"
-          ]
-        },
-        {
-          "segmentId": "segment-6-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-17"
-          ]
-        },
-        {
-          "segmentId": "segment-6-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-18"
-          ]
-        },
-        {
-          "segmentId": "segment-6-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-6-19"
-          ]
-        },
-        {
-          "segmentId": "segment-6-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-6"
-          ]
-        }
-      ]
-    },
-    {
-      "trackId": "7",
-      "segments": [
-        {
-          "segmentId": "start-and-goal-7",
-          "type": "start-goal",
-          "nextSegments": [
-            "segment-7-1"
-          ]
-        },
-        {
-          "segmentId": "segment-7-1",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-2"
-          ]
-        },
-        {
-          "segmentId": "segment-7-2",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-3"
-          ]
-        },
-        {
-          "segmentId": "segment-7-3",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-4"
-          ]
-        },
-        {
-          "segmentId": "segment-7-4",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-5"
-          ]
-        },
-        {
-          "segmentId": "segment-7-5",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-6"
-          ]
-        },
-        {
-          "segmentId": "segment-7-6",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-7"
-          ]
-        },
-        {
-          "segmentId": "segment-7-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-8"
-          ]
-        },
-        {
-          "segmentId": "segment-7-8",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-9"
-          ]
-        },
-        {
-          "segmentId": "segment-7-9",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-10"
-          ]
-        },
-        {
-          "segmentId": "segment-7-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-11"
-          ]
-        },
-        {
-          "segmentId": "segment-7-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-12"
-          ]
-        },
-        {
-          "segmentId": "segment-7-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-13"
-          ]
-        },
-        {
-          "segmentId": "segment-7-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-14"
-          ]
-        },
-        {
-          "segmentId": "segment-7-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-15"
-          ]
-        },
-        {
-          "segmentId": "segment-7-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-16"
-          ]
-        },
-        {
-          "segmentId": "segment-7-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-17"
-          ]
-        },
-        {
-          "segmentId": "segment-7-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-18"
-          ]
-        },
-        {
-          "segmentId": "segment-7-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-7-19"
-          ]
-        },
-        {
-          "segmentId": "segment-7-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-7"
-          ]
-        }
-      ]
-    },
-    {
-      "trackId": "8",
-      "segments": [
-        {
-          "segmentId": "start-and-goal-8",
-          "type": "start-goal",
-          "nextSegments": [
-            "segment-8-1"
-          ]
-        },
-        {
-          "segmentId": "segment-8-1",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-2"
-          ]
-        },
-        {
-          "segmentId": "segment-8-2",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-3"
-          ]
-        },
-        {
-          "segmentId": "segment-8-3",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-4"
-          ]
-        },
-        {
-          "segmentId": "segment-8-4",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-5"
-          ]
-        },
-        {
-          "segmentId": "segment-8-5",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-6"
-          ]
-        },
-        {
-          "segmentId": "segment-8-6",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-7"
-          ]
-        },
-        {
-          "segmentId": "segment-8-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-8"
-          ]
-        },
-        {
-          "segmentId": "segment-8-8",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-9"
-          ]
-        },
-        {
-          "segmentId": "segment-8-9",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-10"
-          ]
-        },
-        {
-          "segmentId": "segment-8-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-11"
-          ]
-        },
-        {
-          "segmentId": "segment-8-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-12"
-          ]
-        },
-        {
-          "segmentId": "segment-8-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-13"
-          ]
-        },
-        {
-          "segmentId": "segment-8-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-14"
-          ]
-        },
-        {
-          "segmentId": "segment-8-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-15"
-          ]
-        },
-        {
-          "segmentId": "segment-8-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-16"
-          ]
-        },
-        {
-          "segmentId": "segment-8-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-17"
-          ]
-        },
-        {
-          "segmentId": "segment-8-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-18"
-          ]
-        },
-        {
-          "segmentId": "segment-8-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-8-19"
-          ]
-        },
-        {
-          "segmentId": "segment-8-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-8"
-          ]
-        }
-      ]
-    },
-    {
-      "trackId": "9",
-      "segments": [
-        {
-          "segmentId": "start-and-goal-9",
-          "type": "start-goal",
-          "nextSegments": [
-            "segment-9-1"
-          ]
-        },
-        {
-          "segmentId": "segment-9-1",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-2"
-          ]
-        },
-        {
-          "segmentId": "segment-9-2",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-3"
-          ]
-        },
-        {
-          "segmentId": "segment-9-3",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-4"
-          ]
-        },
-        {
-          "segmentId": "segment-9-4",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-5"
-          ]
-        },
-        {
-          "segmentId": "segment-9-5",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-6"
-          ]
-        },
-        {
-          "segmentId": "segment-9-6",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-7"
-          ]
-        },
-        {
-          "segmentId": "segment-9-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-8"
-          ]
-        },
-        {
-          "segmentId": "segment-9-8",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-9"
-          ]
-        },
-        {
-          "segmentId": "segment-9-9",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-10"
-          ]
-        },
-        {
-          "segmentId": "segment-9-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-11"
-          ]
-        },
-        {
-          "segmentId": "segment-9-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-12"
-          ]
-        },
-        {
-          "segmentId": "segment-9-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-13"
-          ]
-        },
-        {
-          "segmentId": "segment-9-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-14"
-          ]
-        },
-        {
-          "segmentId": "segment-9-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-15"
-          ]
-        },
-        {
-          "segmentId": "segment-9-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-16"
-          ]
-        },
-        {
-          "segmentId": "segment-9-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-17"
-          ]
-        },
-        {
-          "segmentId": "segment-9-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-18"
-          ]
-        },
-        {
-          "segmentId": "segment-9-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-9-19"
-          ]
-        },
-        {
-          "segmentId": "segment-9-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-9"
-          ]
-        }
-      ]
-    },
-    {
-      "trackId": "10",
-      "segments": [
-        {
-          "segmentId": "start-and-goal-10",
-          "type": "start-goal",
-          "nextSegments": [
-            "segment-10-1"
-          ]
-        },
-        {
-          "segmentId": "segment-10-1",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-2"
-          ]
-        },
-        {
-          "segmentId": "segment-10-2",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-3"
-          ]
-        },
-        {
-          "segmentId": "segment-10-3",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-4"
-          ]
-        },
-        {
-          "segmentId": "segment-10-4",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-5"
-          ]
-        },
-        {
-          "segmentId": "segment-10-5",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-6"
-          ]
-        },
-        {
-          "segmentId": "segment-10-6",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-7"
-          ]
-        },
-        {
-          "segmentId": "segment-10-7",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-8"
-          ]
-        },
-        {
-          "segmentId": "segment-10-8",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-9"
-          ]
-        },
-        {
-          "segmentId": "segment-10-9",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-10"
-          ]
-        },
-        {
-          "segmentId": "segment-10-10",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-11"
-          ]
-        },
-        {
-          "segmentId": "segment-10-11",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-12"
-          ]
-        },
-        {
-          "segmentId": "segment-10-12",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-13"
-          ]
-        },
-        {
-          "segmentId": "segment-10-13",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-14"
-          ]
-        },
-        {
-          "segmentId": "segment-10-14",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-15"
-          ]
-        },
-        {
-          "segmentId": "segment-10-15",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-16"
-          ]
-        },
-        {
-          "segmentId": "segment-10-16",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-17"
-          ]
-        },
-        {
-          "segmentId": "segment-10-17",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-18"
-          ]
-        },
-        {
-          "segmentId": "segment-10-18",
-          "type": "normal",
-          "nextSegments": [
-            "segment-10-19"
-          ]
-        },
-        {
-          "segmentId": "segment-10-19",
-          "type": "normal",
-          "nextSegments": [
-            "start-and-goal-10"
+            "start-and-goal-3",
+            "start-and-goal-2"
           ]
         }
       ]
