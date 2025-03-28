@@ -6,8 +6,8 @@ Dieses Projekt implementiert eine verteilte Simulation eines Spiels namens **Ave
 
 - [Überblick](#überblick)
 - [Voraussetzungen](#voraussetzungen)
-- [Installation und Verwendung](#installation)
-- [Probleme] (#probleme)
+- [Installation und Verwendung](#installation-und-verwendung)
+- [Probleme](#probleme)
 
 ---
 
