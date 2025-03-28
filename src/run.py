@@ -175,7 +175,7 @@ def listen_for_finished_players(done_event, num_players):
                 logging.info(f"[FINISH] Player {player_id} has finished the race but not greeted caesar.")
             
             if len(finished_players) >= num_players:
-                logging.info("[END] All Players have finished the race.")
+                logging.info("[END] All Players have finished the race. Press Enter to shut down Program.")
                 input("Press Enter to shut down program...")
                 done_event.set()
                 break

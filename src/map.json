@@ -1,5 +1,5 @@
 {
-  "totalSegments": 31,
+  "totalSegments": 33,
   "tracks": [
     {
       "trackId": "caesar",
@@ -63,40 +63,41 @@
         },
         {
           "segmentId": "segment-1-4",
-          "type": "wall-divided",
+          "type": "normal",
           "nextSegments": [
-            "segment-1-5"
+            "segment-1-5",
+            "segment-2-5"
           ]
         },
         {
           "segmentId": "segment-1-5",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
-            "segment-1-6",
-            "segment-2-6"
+            "segment-1-6"
           ]
         },
         {
           "segmentId": "segment-1-6",
           "type": "normal",
           "nextSegments": [
-            "segment-1-7"
+            "segment-1-7",
+            "segment-2-7"
           ]
         },
         {
           "segmentId": "segment-1-7",
-          "type": "bottleneck",
+          "type": "normal",
           "nextSegments": [
             "segment-1-8",
-            "segment-2-8",
-            "segment-3-8"
+            "segment-2-8"
           ]
         },
         {
           "segmentId": "segment-1-8",
-          "type": "wall-divided",
+          "type": "normal",
           "nextSegments": [
-            "segment-1-9"
+            "segment-1-9",
+            "segment-2-9"
           ]
         },
         {
@@ -149,32 +150,45 @@
         },
         {
           "segmentId": "segment-2-4",
-          "type": "wall-divided",
+          "type": "normal",
           "nextSegments": [
-            "segment-2-5"
+            "segment-2-5",
+            "segment-1-5",
+            "segment-3-5"
           ]
         },
         {
           "segmentId": "segment-2-5",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
-            "segment-2-6",
-            "segment-1-6",
-            "segment-3-6"
+            "segment-2-6"
           ]
         },
         {
           "segmentId": "segment-2-6",
           "type": "normal",
           "nextSegments": [
-            "segment-1-7"
+            "segment-2-7",
+            "segment-1-7",
+            "segment-3-7"
+          ]
+        },
+        {
+          "segmentId": "segment-2-7",
+          "type": "normal",
+          "nextSegments": [
+            "segment-2-8",
+            "segment-1-8",
+            "segment-3-8"
           ]
         },
         {
           "segmentId": "segment-2-8",
-          "type": "wall-divided",
+          "type": "normal",
           "nextSegments": [
-            "segment-2-9"
+            "segment-2-9",
+            "segment-1-9",
+            "segment-3-9"
           ]
         },
         {
@@ -224,31 +238,41 @@
         },
         {
           "segmentId": "segment-3-4",
-          "type": "wall-divided",
+          "type": "normal",
           "nextSegments": [
-            "segment-3-5"
+            "segment-3-5",
+            "segment-2-5"
           ]
         },
         {
           "segmentId": "segment-3-5",
-          "type": "normal",
+          "type": "wall-divided",
           "nextSegments": [
-            "segment-3-6",
-            "segment-2-6"
+            "segment-3-6"
           ]
         },
         {
           "segmentId": "segment-3-6",
           "type": "normal",
           "nextSegments": [
-            "segment-1-7"
+            "segment-3-7",
+            "segment-2-7"
+          ]
+        },
+        {
+          "segmentId": "segment-3-7",
+          "type": "normal",
+          "nextSegments": [
+            "segment-3-8",
+            "segment-2-8"
           ]
         },
         {
           "segmentId": "segment-3-8",
-          "type": "wall-divided",
+          "type": "normal",
           "nextSegments": [
-            "segment-3-9"
+            "segment-3-9",
+            "segment-2-9"
           ]
         },
         {

@@ -7,6 +7,7 @@ Dieses Projekt implementiert eine verteilte Simulation eines Spiels namens **Ave
 - [Überblick](#überblick)
 - [Voraussetzungen](#voraussetzungen)
 - [Installation und Verwendung](#installation)
+- [Probleme] (#probleme)
 
 ---
 
@@ -39,6 +40,7 @@ Bevor du das Projekt ausführst, stelle sicher, dass folgende Software installie
     python3 -m venv .venv
     source .venv/bin/activate
     pip install -r requirements.txt
+    cd src/
     ```
 3. **Verwendung**:
     ```bash
@@ -50,3 +52,6 @@ Bevor du das Projekt ausführst, stelle sicher, dass folgende Software installie
     # Alternativ falls bestehende map.json verwendet werden soll
     python run.py --use-existing
     ```
+
+## Probleme
+Vereinzelt kann es bei Durchläufen zu Deadlocks kommen. Grund hierfür ist, dass manchmal Nachrichten nicht korrekt weitergeleitet werden, beispielsweise weil Kafka Topics noch nicht vollständige registriert hat. Dadurch, dass die gesamte Kafka Infrastruktur bei jedem Programmstart neu gebaut wird, können diese Fehler, trotz eingebauten Wartezeiten, leider auftreten.
